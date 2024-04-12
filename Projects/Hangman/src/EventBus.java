@@ -23,6 +23,17 @@ public class EventBus
         on(eventName, callback);
     }
 
+    public static void off(String eventName, ICallBack callback)
+    {
+        if(!has(eventName))
+            return;
+
+        _removeObserver(eventName, callback);
+
+        if(_events.size() < 1)
+            _removeEventKey(eventName);
+    }
+
     public static void trigger(String eventName)
     {
         if(!has(eventName))
@@ -31,6 +42,16 @@ public class EventBus
         for (ICallBack callback : _events.get(eventName).getObservers()) {
             callback.Present();
         }
+    }
+
+    private static void _removeObserver(String eventName, ICallBack callback)
+    {
+        _events.get(eventName).removeObserver(callback);
+    }
+
+    private static void _removeEventKey(String eventName)
+    {
+        _events.remove(eventName);
     }
 
 }

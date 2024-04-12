@@ -23,6 +23,13 @@ public class EventModel
         _observers.add(observer);
     }
 
+    public void removeObserver(ICallBack observer)
+    {
+        if(!hasObserver(observer))
+            return;
+        _observers.remove(observer);
+    }
+
     public String               getName()      { return(_name); }
     public ArrayList<ICallBack> getObservers() { return(_observers); }
 }

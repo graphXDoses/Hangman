@@ -7,11 +7,11 @@ public class MenuContext extends Context
     @Override
     public void Setup()
     {
-        EventBus.on
+        getBindings().put
         ( EventTriggerCase.PRESENT_CONTEXT,   printmenu );
-        EventBus.on
+        getBindings().put
         ( EventTriggerCase.GET_USER_INPUT,    getuserinput );
-        EventBus.on
+        getBindings().put
         ( EventTriggerCase.HANDLE_USER_INPUT, handleuserinput );
     }
 
@@ -39,6 +39,7 @@ public class MenuContext extends Context
                 case("N"):
                 {
                     EventBus.on(EventTriggerCase.CONTEXT_SWITCH, Hangman.game);
+                    //Deactivate();
                     EventBus.trigger(EventTriggerCase.CONTEXT_SWITCH);
                     return;
                 }

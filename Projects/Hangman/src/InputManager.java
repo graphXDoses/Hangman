@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class InputManager
+public class InputManager implements ICallBack
 {
     private static final Scanner USER_INPUT = new Scanner(System.in);
     private static String lastUserInput = null;
@@ -13,5 +13,11 @@ public class InputManager
     public static String getLastUserInput()
     {
         return(lastUserInput);
+    }
+
+    @Override
+    public void Present()
+    {
+        InputManager.read();
     }
 }

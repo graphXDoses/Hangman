@@ -1,14 +1,13 @@
 public class Hangman
 {
     private static Hangman instance = null;
+    public  static final Context menu = new MenuContext();
+    public  static final Context game = new GameContext();
 
     private Hangman()
     {
-        System.out.println("Hangman Created!");
-        EventBus.on("CONTEXT SWITCH", new PrintMenu());
-        EventBus.on("GET USER INPUT", new UserInput());
-
-        EventBus.trigger("CONTEXT SWITCH");
+        EventBus.on(EventTriggerCase.CONTEXT_SWITCH, menu);
+        EventBus.trigger(EventTriggerCase.CONTEXT_SWITCH);
     }
 
     public static Hangman Init()

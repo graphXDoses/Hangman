@@ -5,6 +5,10 @@ public class Hangman
     private Hangman()
     {
         System.out.println("Hangman Created!");
+        EventBus.on("CONTEXT SWITCH", new PrintMenu());
+        EventBus.on("GET USER INPUT", new UserInput());
+
+        EventBus.trigger("CONTEXT SWITCH");
     }
 
     public static Hangman Init()

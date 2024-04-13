@@ -18,7 +18,7 @@ public class MenuContext extends Context
     static class PrintMenu implements ICallBack
     {
         @Override
-        public void Present()
+        public void Respond()
         {
             System.out.println("Main Menu:");
             System.out.println("- New Game   (N)");
@@ -32,18 +32,32 @@ public class MenuContext extends Context
     static class HandleUserInput implements ICallBack
     {
         @Override
-        public void Present()
+        public void Respond()
         {
             switch (InputManager.getLastUserInput().toUpperCase())
             {
                 case("N"):
                 {
                     EventBus.on(EventTriggerCase.CONTEXT_SWITCH, Hangman.game);
-                    //Deactivate();
                     EventBus.trigger(EventTriggerCase.CONTEXT_SWITCH);
                     return;
                 }
-                default: return;
+                case("S"):
+                {
+                    EventBus.on(EventTriggerCase.CONTEXT_SWITCH, Hangman.stats);
+                    EventBus.trigger(EventTriggerCase.CONTEXT_SWITCH);
+                    return;
+                }
+                case("E"):
+                {
+                    System.exit(0);
+                    return;
+                }
+                default:
+                {
+                    EventBus.trigger(EventTriggerCase.PRESENT_CONTEXT);
+                    return;
+                }
             }
         }
     }

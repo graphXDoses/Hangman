@@ -39,8 +39,13 @@ public class EventBus
         if(!has(eventName))
             return;
 
-        for (ICallBack callback : _events.get(eventName).getObservers()) {
-            callback.Present();
+        for (ICallBack callback : _events.get(eventName).getObservers())
+        {
+            /*
+            System.out.print("[TRIGGER] : Event Name \'" + eventName + "\'");
+            System.out.println(" " + _events.get(eventName).getObservers());
+            */
+            callback.Respond();
         }
     }
 

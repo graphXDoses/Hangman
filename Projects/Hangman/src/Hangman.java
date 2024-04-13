@@ -1,8 +1,9 @@
 public class Hangman
 {
     private static Hangman instance = null;
-    public  static final Context menu = new MenuContext();
-    public  static final Context game = new GameContext();
+    public  static final Context menu  = new MenuContext();
+    public  static final Context game  = new GameContext();
+    public  static final Context stats = new StatisticsContext();
 
     private Hangman()
     {

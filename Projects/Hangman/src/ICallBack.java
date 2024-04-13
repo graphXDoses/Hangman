@@ -1,4 +1,4 @@
 public interface ICallBack
 {
-    void Present();
+    void Respond();
 }

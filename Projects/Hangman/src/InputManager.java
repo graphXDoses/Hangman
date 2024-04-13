@@ -16,8 +16,9 @@ public class InputManager implements ICallBack
     }
 
     @Override
-    public void Present()
+    public void Respond()
     {
         InputManager.read();
+        EventBus.trigger(EventTriggerCase.HANDLE_USER_INPUT);
     }
 }

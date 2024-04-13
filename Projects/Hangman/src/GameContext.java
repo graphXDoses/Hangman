@@ -7,6 +7,8 @@ public class GameContext extends Context
     @Override
     public void Setup()
     {
+        /*
+        */
         getBindings().put
         ( EventTriggerCase.PRESENT_CONTEXT,   printmenu );
         getBindings().put
@@ -18,7 +20,7 @@ public class GameContext extends Context
     static class PrintMenu implements ICallBack
     {
         @Override
-        public void Present()
+        public void Respond()
         {
             System.out.println("Game Starts!");
             System.out.println("Give me some input..");
@@ -30,9 +32,12 @@ public class GameContext extends Context
     static class HandleUserInput implements ICallBack
     {
         @Override
-        public void Present()
+        public void Respond()
         {
-            System.out.println("User said -> \'" + InputManager.getLastUserInput().toUpperCase() + "\'");
+            System.out.print("User said -> \'" + InputManager.getLastUserInput().toUpperCase() + "\'");
+            System.out.println(", redirecting to Main Menu..");
+            EventBus.on(EventTriggerCase.CONTEXT_SWITCH, Hangman.menu);
+            EventBus.trigger(EventTriggerCase.CONTEXT_SWITCH);
         }
     }
 }

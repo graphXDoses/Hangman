@@ -27,5 +27,4 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Build with jvpMake
-    - run: chmod 701 ./run.sh && chmod 701 ./justBuildIt.sh && chmod 701 ./flushProjectDerivatives.sh && chmod 701 ./flushBuild.sh \
-           && ./flushBuild.sh && ./justBuildIt.sh
+    - run: chmod 701 ./run.sh && chmod 701 ./justBuildIt.sh && chmod 701 ./flushProjectDerivatives.sh && chmod 701 ./flushBuild.sh && ./flushBuild.sh && ./justBuildIt.sh

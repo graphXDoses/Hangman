@@ -23,7 +23,7 @@ public class GameContext extends Context
         public void Respond()
         {
             System.out.println("Game Starts!");
-            System.out.println("Give me some input..")
+            System.out.println("Give me some input..");
 
             EventBus.trigger(EventTriggerCase.GET_USER_INPUT);
         }

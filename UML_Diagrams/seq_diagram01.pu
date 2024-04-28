@@ -1,0 +1,36 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+actor       User
+boundary    LoginForm
+
+activate    User
+
+autonumber 1
+User->LoginForm++:login()
+autonumber 1.1
+LoginForm-->>User:show login form
+autonumber 2
+User->LoginForm:loginAttempt(username, password)
+autonumber 2.1
+LoginForm->LoginForm:checkData(username, password)
+LoginForm-->LoginForm:corr_username, corr_pass, message
+alt corr_username==true && corr_pass==true
+	LoginForm->LoginForm:getType(username)
+	LoginForm-->LoginForm:type
+	alt type==student
+		LoginForm-->>User:show Student Main Form
+	else
+		LoginForm-->>User:show Professor Main Form
+	end
+else
+	alt corr_pass==false && numberofAttempt<3
+		LoginForm-->>User:message
+		[<-LoginForm: call UC01
+	else
+		LoginForm-->>User:message
+		[<-LoginForm: call UC02
+		deactivate LoginForm
+	end
+end
+@enduml
